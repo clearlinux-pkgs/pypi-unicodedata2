@@ -4,7 +4,7 @@
 #
 Name     : unicodedata2
 Version  : 11.0.0
-Release  : 1
+Release  : 2
 URL      : https://files.pythonhosted.org/packages/b2/62/2a94b8641ea45ff4ffbec0cae13e652d31d6696cd8e20f1ae9d810044c98/unicodedata2-11.0.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b2/62/2a94b8641ea45ff4ffbec0cae13e652d31d6696cd8e20f1ae9d810044c98/unicodedata2-11.0.0.tar.gz
 Summary  : Unicodedata backport for python 2/3 updated to the latest unicode version.
