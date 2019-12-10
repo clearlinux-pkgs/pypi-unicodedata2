@@ -4,7 +4,7 @@
 #
 Name     : unicodedata2
 Version  : 12.1.0
-Release  : 6
+Release  : 7
 URL      : https://files.pythonhosted.org/packages/d1/35/e10de6cf1412d620251f4886e25ebfa82efb5558a83aba70cacec6ed8e4b/unicodedata2-12.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/d1/35/e10de6cf1412d620251f4886e25ebfa82efb5558a83aba70cacec6ed8e4b/unicodedata2-12.1.0.tar.gz
 Summary  : Unicodedata backport for python 2/3 updated to the latest unicode version.
@@ -49,14 +49,14 @@ python3 components for the unicodedata2 package.
 
 %prep
 %setup -q -n unicodedata2-12.1.0
+cd %{_builddir}/unicodedata2-12.1.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571328255
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1576017227
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -72,7 +72,7 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}/usr/lib/python3.7/site-packages python3 setup.py test || :
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
