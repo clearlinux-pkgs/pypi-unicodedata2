@@ -4,7 +4,7 @@
 #
 Name     : unicodedata2
 Version  : 12.1.0
-Release  : 8
+Release  : 9
 URL      : https://files.pythonhosted.org/packages/d1/35/e10de6cf1412d620251f4886e25ebfa82efb5558a83aba70cacec6ed8e4b/unicodedata2-12.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/d1/35/e10de6cf1412d620251f4886e25ebfa82efb5558a83aba70cacec6ed8e4b/unicodedata2-12.1.0.tar.gz
 Summary  : Unicodedata backport for python 2/3 updated to the latest unicode version.
@@ -42,6 +42,7 @@ python components for the unicodedata2 package.
 Summary: python3 components for the unicodedata2 package.
 Group: Default
 Requires: python3-core
+Provides: pypi(unicodedata2)
 
 %description python3
 python3 components for the unicodedata2 package.
@@ -56,7 +57,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1576017227
+export SOURCE_DATE_EPOCH=1582906565
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
