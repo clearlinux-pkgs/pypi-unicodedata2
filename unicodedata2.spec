@@ -4,7 +4,7 @@
 #
 Name     : unicodedata2
 Version  : 13.0.0.post2
-Release  : 12
+Release  : 13
 URL      : https://files.pythonhosted.org/packages/b8/db/a5d9a7649c2eb2681c30850617b83e1295c3a5bebcdb05908e1da11ed8b7/unicodedata2-13.0.0.post2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b8/db/a5d9a7649c2eb2681c30850617b83e1295c3a5bebcdb05908e1da11ed8b7/unicodedata2-13.0.0.post2.tar.gz
 Summary  : Unicodedata backport for Python 2/3 updated to the latest Unicode version.
@@ -16,7 +16,15 @@ Requires: unicodedata2-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
-[![Travis Build Status](https://travis-ci.org/mikekap/unicodedata2.svg?branch=master)](https://travis-ci.org/mikekap/unicodedata2)
+unicodedata2
+        ============
+        
+        [unicodedata] backport/updates to Python 3 and Python 2.
+        
+        The versions of this package match Unicode versions, so unicodedata2==13.0.0 is data from Unicode 13.0.0.
+        Additionally this backports support for named aliases and named sequences to Python 2.
+        
+        Pre-compiled wheel packages are available on [PyPI] and can be installed via pip.
 
 %package license
 Summary: license components for the unicodedata2 package.
@@ -54,15 +62,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1584736612
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1603407058
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
