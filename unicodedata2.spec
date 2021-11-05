@@ -4,7 +4,7 @@
 #
 Name     : unicodedata2
 Version  : 13.0.0.post2
-Release  : 24
+Release  : 25
 URL      : https://files.pythonhosted.org/packages/b8/db/a5d9a7649c2eb2681c30850617b83e1295c3a5bebcdb05908e1da11ed8b7/unicodedata2-13.0.0.post2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b8/db/a5d9a7649c2eb2681c30850617b83e1295c3a5bebcdb05908e1da11ed8b7/unicodedata2-13.0.0.post2.tar.gz
 Summary  : Unicodedata backport for Python 2/3 updated to the latest Unicode version.
@@ -14,6 +14,7 @@ Requires: unicodedata2-license = %{version}-%{release}
 Requires: unicodedata2-python = %{version}-%{release}
 Requires: unicodedata2-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
+Patch1: build.patch
 
 %description
 unicodedata2
@@ -56,21 +57,22 @@ python3 components for the unicodedata2 package.
 %prep
 %setup -q -n unicodedata2-13.0.0.post2
 cd %{_builddir}/unicodedata2-13.0.0.post2
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1603407058
+export SOURCE_DATE_EPOCH=1636123787
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
