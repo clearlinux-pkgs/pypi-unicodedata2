@@ -1,0 +1,40 @@
+From 42a0afc5a1900cba135caf39a4b1ac4b531622a1 Mon Sep 17 00:00:00 2001
+From: Parag Nemade <panemade@gmail.com>
+Date: Tue, 28 Jun 2022 14:37:49 +0530
+Subject: [PATCH] Fix for Python-3.11 compatibility as given in bpo-39573 (#54)
+
+Signed-off-by: Parag Nemade <pnemade@fedoraproject.org>
+---
+ unicodedata2/unicodedata.c | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/unicodedata2/unicodedata.c b/unicodedata2/unicodedata.c
+index a6ac664..b9d0975 100644
+--- a/unicodedata2/unicodedata.c
++++ b/unicodedata2/unicodedata.c
+@@ -27,6 +27,16 @@
+ #include "structmember.h"
+ #include "unicodectype.h"
+ 
++/* ----------------------------------------------------------------------- *
++ * Update for Python 3.11 - Contributed by Victor Stinner in bpo-39573.
++ * Compatibility macro for older Python versions.
++ * ----------------------------------------------------------------------- */
++#if PY_VERSION_HEX < 0x030900A4 && !defined(Py_SET_TYPE)
++static inline void _Py_SET_TYPE(PyObject *ob, PyTypeObject *type)
++{ ob->ob_type = type; }
++#define Py_SET_TYPE(ob, type) _Py_SET_TYPE((PyObject*)(ob), type)
++#endif
++
+ /*[clinic input]
+ module unicodedata
+ class unicodedata.UCD 'PreviousDBVersion *' '&UCD_Type'
+@@ -1359,7 +1369,7 @@ PyInit_unicodedata2(void)
+ {
+     PyObject *m, *v;
+ 
+-    Py_TYPE(&UCD_Type) = &PyType_Type;
++    Py_SET_TYPE(&UCD_Type, &PyType_Type);
+ 
+     m = PyModule_Create(&unicodedatamodule);
+     if (!m)
