@@ -4,72 +4,25 @@
 #
 Name     : pypi-unicodedata2
 Version  : 15.0.0
-Release  : 40
+Release  : 41
 URL      : https://files.pythonhosted.org/packages/b9/d6/d533700679436625415094a95415db1e7357c48bdeb1b90653f3b903174e/unicodedata2-15.0.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b9/d6/d533700679436625415094a95415db1e7357c48bdeb1b90653f3b903174e/unicodedata2-15.0.0.tar.gz
 Summary  : Unicodedata backport updated to the latest Unicode version.
 Group    : Development/Tools
 License  : Apache-2.0
-Requires: pypi-unicodedata2-filemap = %{version}-%{release}
-Requires: pypi-unicodedata2-lib = %{version}-%{release}
-Requires: pypi-unicodedata2-license = %{version}-%{release}
-Requires: pypi-unicodedata2-python = %{version}-%{release}
-Requires: pypi-unicodedata2-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
 [![Githun CI Status](https://github.com/fonttools/unicodedata2/workflows/Build%20+%20Deploy/badge.svg)](https://github.com/fonttools/unicodedata2/actions?query=workflow%3A%22Build+%2B+Deploy%22)
 [![PyPI](https://img.shields.io/pypi/v/unicodedata2.svg)](https://pypi.org/project/unicodedata2/)
 
-%package filemap
-Summary: filemap components for the pypi-unicodedata2 package.
-Group: Default
-
-%description filemap
-filemap components for the pypi-unicodedata2 package.
-
-
-%package lib
-Summary: lib components for the pypi-unicodedata2 package.
-Group: Libraries
-Requires: pypi-unicodedata2-license = %{version}-%{release}
-Requires: pypi-unicodedata2-filemap = %{version}-%{release}
-
-%description lib
-lib components for the pypi-unicodedata2 package.
-
-
-%package license
-Summary: license components for the pypi-unicodedata2 package.
-Group: Default
-
-%description license
-license components for the pypi-unicodedata2 package.
-
-
-%package python
-Summary: python components for the pypi-unicodedata2 package.
-Group: Default
-Requires: pypi-unicodedata2-python3 = %{version}-%{release}
-
-%description python
-python components for the pypi-unicodedata2 package.
-
-
-%package python3
-Summary: python3 components for the pypi-unicodedata2 package.
-Group: Default
-Requires: pypi-unicodedata2-filemap = %{version}-%{release}
-Requires: python3-core
-Provides: pypi(unicodedata2)
-
-%description python3
-python3 components for the pypi-unicodedata2 package.
-
-
 %prep
 %setup -q -n unicodedata2-15.0.0
 cd %{_builddir}/unicodedata2-15.0.0
+<<<<<<< Updated upstream
+=======
+%patch1 -p1
+>>>>>>> Stashed changes
 pushd ..
 cp -a unicodedata2-15.0.0 buildavx2
 popd
@@ -79,7 +32,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
+<<<<<<< Updated upstream
 export SOURCE_DATE_EPOCH=1667242624
+=======
+export SOURCE_DATE_EPOCH=1667234588
+>>>>>>> Stashed changes
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -111,7 +68,7 @@ PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python set
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pypi-unicodedata2
-cp %{_builddir}/unicodedata2-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-unicodedata2/c700a8b9312d24bdc57570f7d6a131cf63d89016
+cp %{_builddir}/unicodedata2-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-unicodedata2/c700a8b9312d24bdc57570f7d6a131cf63d89016 || :
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -128,22 +85,3 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-pypi-unicodedata2
-
-%files lib
-%defattr(-,root,root,-)
-/usr/share/clear/optimized-elf/other*
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/pypi-unicodedata2/c700a8b9312d24bdc57570f7d6a131cf63d89016
-
-%files python
-%defattr(-,root,root,-)
-
-%files python3
-%defattr(-,root,root,-)
-/usr/lib/python3*/*
