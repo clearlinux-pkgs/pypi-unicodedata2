@@ -5,7 +5,7 @@
 #
 Name     : pypi-unicodedata2
 Version  : 15.1.0
-Release  : 43
+Release  : 44
 URL      : https://files.pythonhosted.org/packages/7f/35/12c70556a27ad6196135ddb37030d1a989234ef41f05995a166297651a49/unicodedata2-15.1.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/7f/35/12c70556a27ad6196135ddb37030d1a989234ef41f05995a166297651a49/unicodedata2-15.1.0.tar.gz
 Summary  : Unicodedata backport updated to the latest Unicode version.
