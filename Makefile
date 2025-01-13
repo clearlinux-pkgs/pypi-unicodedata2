@@ -1,5 +1,5 @@
 PKG_NAME := pypi-unicodedata2
-URL = https://files.pythonhosted.org/packages/7f/35/12c70556a27ad6196135ddb37030d1a989234ef41f05995a166297651a49/unicodedata2-15.1.0.tar.gz
+URL = https://files.pythonhosted.org/packages/8c/c6/f1aa23ed42259789c1c9bdeac219bfe72cc3046c3fc39ad3155705f81d9b/unicodedata2-16.0.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
